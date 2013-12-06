@@ -1,0 +1,45 @@
+
+
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#tab1" data-toggle="tab">My Posts</a></li>
+    <li><a href="#tab2" data-toggle="tab">Other Posts</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+                <div class ="border-form-div-content">
+               <table>
+                 <% @posts_created.each do |post| %>
+                <tr>
+                  <td style="width: 87%;"><%= link_to "#{post.title}",post %></td>
+                  <td><%= link_to 'Edit', edit_post_path(post),:class => "btn btn-info" %>  </td>
+
+                  <td><%= link_to 'Destroy', post,:class => "btn btn-info", method: :delete, data: { confirm: 'Are you sure?' } %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        
+
+        <%= link_to 'New Post', new_post_path,:class => "btn btn-success" %>
+    </div>
+
+    <div class="tab-pane" id="tab2">
+             <div class ="border-form-div-content">
+            <table>
+             <% @others_posts.each do |post| %>
+                <tr>
+                  <td><%= link_to "#{post.title}",post%>&nbsp</td>
+                </tr>
+             <% end %>
+            </table>
+       </div>
+     </div>
+  </div>
+</div>
+
+
+
